@@ -113,10 +113,10 @@ public class MainActivity extends AppCompatActivity {
         JSONObject jsonObject = NetworkUtils.getJSONFromNetwork(methodOfSort, 1);
         ArrayList<Movie> movies = JSONUtils.getMoviesFromJSON(jsonObject);
         if (movies != null && !movies.isEmpty()){
+            viewModel.deleteAllMovies();
             for (Movie movie :movies){
                 viewModel.insertMovies(movie);
             }
         }
-
     }
 }

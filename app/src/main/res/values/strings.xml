@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">MyMovies</string>
-    <string name="poster_of_movie">Постер к фильму</string>
+    <string name="poster_of_movie">Film poster</string>
     <string name="most_popular">Popular</string>
     <string name="top_rated">Top rated</string>
+    <string name="add_to_favourite">Added to the favourite</string>
+    <string name="deleted_from_favourite">Deleted from the favourite</string>
 </resources>
