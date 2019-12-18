@@ -9,7 +9,8 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="#252525">
 
         <ImageView
             android:id="@+id/imageViewPlay"
@@ -26,6 +27,7 @@
             android:id="@+id/textViewNameOfVideo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@id/imageViewPlay"
             app:layout_constraintEnd_toEndOf="parent"

@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +30,7 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -39,6 +41,7 @@ public class DetailActivity extends AppCompatActivity {
     private TextView textViewRating;
     private TextView textViewReleaseDate;
     private TextView textViewOverview;
+    private ScrollView scrollViewInfo;
 
     private RecyclerView recyclerViewTrailers;
     private RecyclerView recyclerViewReviews;
@@ -50,8 +53,6 @@ public class DetailActivity extends AppCompatActivity {
     private MainViewModel viewModel;
     private Movie movie;
     private FavouriteMovie favouriteMovie;
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -81,7 +82,6 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-
         imageViewBigPoster = findViewById(R.id.imageViewBigPoster);
         textviewTitle = findViewById(R.id.textViewTitle);
         textViewOriginalTitle = findViewById(R.id.textViewOriginalTitle);
@@ -89,6 +89,7 @@ public class DetailActivity extends AppCompatActivity {
         textViewReleaseDate = findViewById(R.id.textViewReleaseDate);
         textViewOverview = findViewById(R.id.textViewOverview);
         imageViewAddToFavourite = findViewById(R.id.imageViewAddToFavourite);
+        scrollViewInfo = findViewById(R.id.scrollViewInfo);
         Intent intent = getIntent();
         if( intent != null && intent.hasExtra("id")){
             id =intent.getIntExtra("id",-1);
@@ -128,6 +129,7 @@ public class DetailActivity extends AppCompatActivity {
         ArrayList<Review> reviews = JSONUtils.getReviesFromJSON(jsonObjectreviews);
         reviewAdapter.setReviews(reviews);
         trailerAdapter.setTrailers(trailers);
+        scrollViewInfo.smoothScrollTo(0,0);
     }
 
     public void onClickChangeFavourite(View view) {
