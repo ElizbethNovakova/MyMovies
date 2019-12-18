@@ -98,7 +98,7 @@ public class DetailActivity extends AppCompatActivity {
         }
         viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
         movie = viewModel.getMovieById(id);
-        Picasso.get().load(movie.getBigPosterPath()).into(imageViewBigPoster);
+        Picasso.get().load(movie.getBigPosterPath()).placeholder(R.drawable.movie_placeholder).into(imageViewBigPoster);
         textviewTitle.setText(movie.getTitle());
         textViewOriginalTitle.setText(movie.getOriginalTitle());
         textViewOverview.setText(movie.getOverview());
