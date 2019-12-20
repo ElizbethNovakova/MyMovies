@@ -35,8 +35,15 @@ public class TrailerAdapter extends RecyclerView.Adapter<TrailerAdapter.TrailerV
         return trailers.size();
     }
 
-    public interface OnTrailerClickListener{
-        void onTrailerClick(String url);
+    public interface OnTrailerClickListener{ void onTrailerClick(String url);}
+
+    public void setTrailers(ArrayList<Trailer> trailers) {
+        this.trailers = trailers;
+        notifyDataSetChanged();
+    }
+
+    public void setOnTrailerClickListener(OnTrailerClickListener onTrailerClickListener) {
+        this.onTrailerClickListener = onTrailerClickListener;
     }
 
     class TrailerViewHolder extends RecyclerView.ViewHolder {
@@ -58,12 +65,4 @@ public class TrailerAdapter extends RecyclerView.Adapter<TrailerAdapter.TrailerV
         }
     }
 
-    public void setTrailers(ArrayList<Trailer> trailers) {
-        this.trailers = trailers;
-        notifyDataSetChanged();
-    }
-
-    public void setOnTrailerClickListener(OnTrailerClickListener onTrailerClickListener) {
-        this.onTrailerClickListener = onTrailerClickListener;
-    }
 }

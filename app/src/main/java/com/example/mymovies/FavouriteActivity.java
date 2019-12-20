@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -52,13 +53,19 @@ public class FavouriteActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+    private int getColumnCount(){
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int width = (int) (displayMetrics.widthPixels / displayMetrics.density);
+        return width/185 > 2 ? width/185 : 2;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourite);
         recyclerViewFavouriteMovies = findViewById(R.id.recyclerViewFavouriteMovies);
-        recyclerViewFavouriteMovies.setLayoutManager(new GridLayoutManager(this,2));
+        recyclerViewFavouriteMovies.setLayoutManager(new GridLayoutManager(this,getColumnCount()));
         adapter = new MovieAdapter();
         recyclerViewFavouriteMovies.setAdapter(adapter);
         viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
